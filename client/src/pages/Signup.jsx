@@ -29,7 +29,7 @@ export default function Signup() {
       }
       setLoading(false);
       if(res.ok) {
-        navigate('/signin');
+        navigate('/signin'); 
       }
     } catch (error) {
       setErrorMessage(error.message);
