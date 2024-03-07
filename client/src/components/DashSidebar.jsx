@@ -60,7 +60,7 @@ export default function DashSidebar() {
               active={tab === 'profile'}
               icon={HiUser}
               label={
-                // currentUser.isAdmin ? 'Admin' :
+                currentUser.isAdmin ? 'Admin' :
                  'User'}
               labelColor='dark'
               as='div'
