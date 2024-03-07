@@ -1,6 +1,4 @@
-import { Alert, Button, Modal,
-  //  ModalBody,
-    TextInput } from 'flowbite-react';
+import { Alert, Button, Modal,ModalBody,TextInput } from 'flowbite-react';
 import { useEffect, useRef, useState } from 'react';
 import { useSelector } from 'react-redux';
 import {
@@ -16,9 +14,9 @@ import {
   updateStart,
   updateSuccess,
   updateFailure,
-//   deleteUserStart,
-//   deleteUserSuccess,
-//   deleteUserFailure,
+  deleteUserStart,
+  deleteUserSuccess,
+  deleteUserFailure,
 //   signoutSuccess,
 } from '../redux/user/userSlice';
 import { useDispatch } from 'react-redux';
@@ -125,23 +123,23 @@ export default function DashProfile() {
     }
   };
 
-//   const handleDeleteUser = async () => {
-//     setShowModal(false);
-//     try {
-//       dispatch(deleteUserStart());
-//       const res = await fetch(`/api/user/delete/${currentUser._id}`, {
-//         method: 'DELETE',
-//       });
-//       const data = await res.json();
-//       if (!res.ok) {
-//         dispatch(deleteUserFailure(data.message));
-//       } else {
-//         dispatch(deleteUserSuccess(data));
-//       }
-//     } catch (error) {
-//       dispatch(deleteUserFailure(error.message));
-//     }
-//   };
+  const handleDeleteUser = async () => {
+    setShowModal(false);
+    try {
+      dispatch(deleteUserStart());
+      const res = await fetch(`/api/user/delete/${currentUser._id}`, {
+        method: 'DELETE',
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        dispatch(deleteUserFailure(data.message));
+      } else {
+        dispatch(deleteUserSuccess(data));
+      }
+    } catch (error) {
+      dispatch(deleteUserFailure(error.message));
+    }
+  };
 
   // const handleSignout = async () => {
   //   try {
@@ -289,7 +287,7 @@ export default function DashProfile() {
             </h3>
             <div className='flex justify-center gap-4'>
               <Button color='failure' 
-            //   onClick={handleDeleteUser}
+              onClick={handleDeleteUser}
               >
                 Yes, I`m sure
               </Button>
