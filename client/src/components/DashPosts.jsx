@@ -11,25 +11,25 @@ export default function DashPosts() {
   const [showMore, setShowMore] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const [postIdToDelete, setPostIdToDelete] = useState('');
-//   useEffect(() => {
-//     const fetchPosts = async () => {
-//       try {
-//         const res = await fetch(`/api/post/getposts?userId=${currentUser._id}`);
-//         const data = await res.json();
-//         if (res.ok) {
-//           setUserPosts(data.posts);
-//           if (data.posts.length < 9) {
-//             setShowMore(false);
-//           }
-//         }
-//       } catch (error) {
-//         console.log(error.message);
-//       }
-//     };
-//     if (currentUser.isAdmin) {
-//       fetchPosts();
-//     }
-//   }, [currentUser._id]);
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const res = await fetch(`/api/post/getposts?userId=${currentUser._id}`);
+        const data = await res.json();
+        if (res.ok) {
+          setUserPosts(data.posts);
+          if (data.posts.length < 9) {
+            setShowMore(false);
+          }
+        }
+      } catch (error) {
+        console.log(error.message);
+      }
+    };
+    if (currentUser.isAdmin) {
+      fetchPosts();
+    }
+  }, [currentUser._id]);
 
 //   const handleShowMore = async () => {
 //     const startIndex = userPosts.length;
@@ -76,7 +76,7 @@ export default function DashPosts() {
       {currentUser.isAdmin && userPosts.length > 0 ? (
         <>
           <Table hoverable className='shadow-md'>
-            {/* <Table.Head>
+            <Table.Head>
               <Table.HeadCell>Date updated</Table.HeadCell>
               <Table.HeadCell>Post image</Table.HeadCell>
               <Table.HeadCell>Post title</Table.HeadCell>
@@ -85,7 +85,7 @@ export default function DashPosts() {
               <Table.HeadCell>
                 <span>Edit</span>
               </Table.HeadCell>
-            </Table.Head> */}
+            </Table.Head>
             {userPosts.map((post) => (
               <Table.Body className='divide-y'>
                 <Table.Row className='bg-white dark:border-gray-700 dark:bg-gray-800'>
