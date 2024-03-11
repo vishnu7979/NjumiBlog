@@ -99,7 +99,7 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
           <>
             <p className='text-gray-500 pb-2'>{comment.content}</p>
             <div className='flex items-center pt-2 text-xs border-t dark:border-gray-700 max-w-fit gap-2'>
-              {/* <button
+              <button
                 type='button'
                 onClick={() => onLike(comment._id)}
                 className={`text-gray-400 hover:text-blue-500 ${
@@ -109,13 +109,13 @@ export default function Comment({ comment, onLike, onEdit, onDelete }) {
                 }`}
               >
                 <FaThumbsUp className='text-sm' />
-              </button> */}
-              {/* <p className='text-gray-400'>
+              </button>
+              <p className='text-gray-400'>
                 {comment.numberOfLikes > 0 &&
                   comment.numberOfLikes +
                     ' ' +
                     (comment.numberOfLikes === 1 ? 'like' : 'likes')}
-              </p> */}
+              </p>
               {/* {currentUser &&
                 (currentUser._id === comment.userId || currentUser.isAdmin) && (
                   <>

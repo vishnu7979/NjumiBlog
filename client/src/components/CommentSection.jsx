@@ -2,7 +2,6 @@ import { Alert, Button, Modal, TextInput, Textarea } from 'flowbite-react';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-// import Comment from './Comment';
 import { HiOutlineExclamationCircle } from 'react-icons/hi';
 import Comment from './Comment';
 
@@ -58,33 +57,33 @@ export default function CommentSection({ postId }) {
     getComments();
   }, [postId]);
 
-  // const handleLike = async (commentId) => {
-  //   try {
-  //     if (!currentUser) {
-  //       navigate('/sign-in');
-  //       return;
-  //     }
-  //     const res = await fetch(`/api/comment/likeComment/${commentId}`, {
-  //       method: 'PUT',
-  //     });
-  //     if (res.ok) {
-  //       const data = await res.json();
-  //       setComments(
-  //         comments.map((comment) =>
-  //           comment._id === commentId
-  //             ? {
-  //                 ...comment,
-  //                 likes: data.likes,
-  //                 numberOfLikes: data.likes.length,
-  //               }
-  //             : comment
-  //         )
-  //       );
-  //     }
-  //   } catch (error) {
-  //     console.log(error.message);
-  //   }
-  // };
+  const handleLike = async (commentId) => {
+    try {
+      if (!currentUser) {
+        navigate('/signin');
+        return;
+      }
+      const res = await fetch(`/api/comment/likeComment/${commentId}`, {
+        method: 'PUT',
+      });
+      if (res.ok) {
+        const data = await res.json();
+        setComments(
+          comments.map((comment) =>
+            comment._id === commentId
+              ? {
+                  ...comment,
+                  likes: data.likes,
+                  numberOfLikes: data.likes.length,
+                }
+              : comment
+          )
+        );
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   // const handleEdit = async (comment, editedContent) => {
   //   setComments(
@@ -98,7 +97,7 @@ export default function CommentSection({ postId }) {
   //   setShowModal(false);
   //   try {
   //     if (!currentUser) {
-  //       navigate('/sign-in');
+  //       navigate('/signin');
   //       return;
   //     }
   //     const res = await fetch(`/api/comment/deleteComment/${commentId}`, {
@@ -132,7 +131,7 @@ export default function CommentSection({ postId }) {
       ) : (
         <div className='text-sm text-teal-500 my-5 flex gap-1'>
           You must be signed in to comment.
-          <Link className='text-blue-500 hover:underline' to={'/sign-in'}>
+          <Link className='text-blue-500 hover:underline' to={'/signin'}>
             Sign In
           </Link>
         </div>
@@ -178,7 +177,7 @@ export default function CommentSection({ postId }) {
             <Comment
               key={comment._id}
               comment={comment}
-              // onLike={handleLike}
+              onLike={handleLike}
               // onEdit={handleEdit}
               onDelete={(commentId) => {
                 setShowModal(true);
