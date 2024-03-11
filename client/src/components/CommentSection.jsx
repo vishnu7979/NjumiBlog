@@ -85,13 +85,13 @@ export default function CommentSection({ postId }) {
     }
   };
 
-  // const handleEdit = async (comment, editedContent) => {
-  //   setComments(
-  //     comments.map((c) =>
-  //       c._id === comment._id ? { ...c, content: editedContent } : c
-  //     )
-  //   );
-  // };
+  const handleEdit = async (comment, editedContent) => {
+    setComments(
+      comments.map((c) =>
+        c._id === comment._id ? { ...c, content: editedContent } : c
+      )
+    );
+  };
 
   // const handleDelete = async (commentId) => {
   //   setShowModal(false);
@@ -178,11 +178,11 @@ export default function CommentSection({ postId }) {
               key={comment._id}
               comment={comment}
               onLike={handleLike}
-              // onEdit={handleEdit}
-              onDelete={(commentId) => {
-                setShowModal(true);
-                setCommentToDelete(commentId);
-              }}
+              onEdit={handleEdit}
+              // onDelete={(commentId) => {
+              //   setShowModal(true);
+              //   setCommentToDelete(commentId);
+              // }}
             />
           ))}
         </>
