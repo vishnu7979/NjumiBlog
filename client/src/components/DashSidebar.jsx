@@ -2,11 +2,10 @@ import { Sidebar } from 'flowbite-react';
 import {
   HiUser,
   HiArrowSmRight,
-//   HiDocumentText,
   HiOutlineUserGroup,
-//   HiAnnotation,
   HiChartPie,
   HiDocumentText,
+  HiAnnotation,
 } from 'react-icons/hi';
 import { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
@@ -91,7 +90,7 @@ export default function DashSidebar() {
                   Users
                 </Sidebar.Item>
               </Link>
-              {/* <Link to='/dashboard?tab=comments'>
+              <Link to='/dashboard?tab=comments'>
                 <Sidebar.Item
                   active={tab === 'comments'}
                   icon={HiAnnotation}
@@ -99,7 +98,7 @@ export default function DashSidebar() {
                 >
                   Comments
                 </Sidebar.Item>
-              </Link> */}
+              </Link>
             </>
           )}
           <Sidebar.Item
